@@ -1,1 +1,19 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>منو</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage(homePage)">
+        <ion-icon name="home"></ion-icon>&nbsp;خانه
+      </button>
+      <button ion-item (click)="appExit()">
+        <ion-icon name="exit"></ion-icon>&nbsp;خروج
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content [root]="rootPage"></ion-nav>

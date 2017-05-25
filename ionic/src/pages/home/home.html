@@ -3,12 +3,17 @@
   <ion-card style="height:55%">
     <img src="./assets/img/salavat.jpg" height="100%"/>
     <div class="card-title">{{count}}</div>
+    <button ion-fab color="success" class="shareButton"><ion-icon name="md-share"></ion-icon></button>
+    <p class="shareButton" style="color:white;top: 22%!important;right: 77%!important;">اشتراک به گروه</p>
   </ion-card>
 
   <ion-card style="height: 40%;background-color: rgb(248, 225, 254)">
-    <button (tap)="tapEvent($event)" (press)="pressEvent($event)" ion-fab style="width:30%;height:50%;top:20%;right:35%;background-color: blueviolet"><ion-icon name="add"></ion-icon></button>
-    <div class="card-subtitle" style="top:80%;"><p style="color:darkviolet">برای صفر کردن شمارنده دکمه را نگهدارید.</p></div>
+    <button class="tapButton" (tap)="tapEvent($event)" (press)="pressEvent($event)" ion-fab>
+      <ion-icon name="add"></ion-icon></button>
+    <div class="card-subtitle" style="top:80%;"><p
+      style="color:darkviolet">برای صفر کردن شمارنده دکمه را نگهدارید.</p></div>
   </ion-card>
+
 </ion-content>
 
 

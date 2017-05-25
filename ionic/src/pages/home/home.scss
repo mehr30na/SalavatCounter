@@ -7,11 +7,25 @@
 
   .card-title {
     position: absolute;
-    top: 13%;
-    font-size: 7.0em;
+    top: 19%;
+    font-size: 8.0em;
     width: 100%;
     font-weight: bold;
-    color: rgba(255, 255, 255, 0.45);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .shareButton{
+    position: absolute;
+    top: 3%;
+    right: 80%;
+  }
+
+  .tapButton {
+    width:30%;
+    height:45%;
+    top:20%;
+    right:35%;
+    background-color: blueviolet
   }
 
   .card-subtitle {
