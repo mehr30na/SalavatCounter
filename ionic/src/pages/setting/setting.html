@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+    تنظیمات
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>ویبره فعال باشد</ion-label>
+    <ion-toggle checked="{{vibrateStatus}}" (ionChange)="vibrateSetting($event)"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>استفاده از سنسور حرکت</ion-label>
+    <ion-toggle checked="{{shakeStatus}}" (ionChange)="shakeSetting($event)"></ion-toggle>
+  </ion-item>
+</ion-content>
