@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {AboutPage} from '../about/about';
 import {ContactPage} from '../contact/contact';
 import {HomePage} from '../home/home';
-import {AlertController} from "ionic-angular";
+import {SettingPage} from "../setting/setting";
 
 
 @Component({
@@ -14,11 +14,10 @@ export class TabsPage {
   tab1Root = HomePage;
   tab2Root = AboutPage;
   tab3Root = ContactPage;
+  tab4Root = SettingPage;
 
 
-  constructor(private alertCtrl:AlertController
-
-  ) {
+  constructor() {
 
   }
 

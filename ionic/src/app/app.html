@@ -1,4 +1,4 @@
-<ion-menu [content]="content">
+<ion-menu [content]="content" side="right">
   <ion-header>
     <ion-toolbar>
       <ion-title>منو</ion-title>
@@ -8,9 +8,6 @@
     <ion-list>
       <button ion-item (click)="openPage(homePage)">
         <ion-icon name="home"></ion-icon>&nbsp;خانه
-      </button>
-      <button ion-item (click)="appExit()">
-        <ion-icon name="exit"></ion-icon>&nbsp;خروج
       </button>
     </ion-list>
   </ion-content>
