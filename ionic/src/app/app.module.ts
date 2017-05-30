@@ -16,6 +16,9 @@ import {Vibration} from "@ionic-native/vibration";
 import {Shake} from "@ionic-native/shake";
 import {SettingPage} from "../pages/setting/setting";
 import {BackgroundMode} from "@ionic-native/background-mode";
+import {Device} from "@ionic-native/device";
+import {AppServiceProvider} from '../providers/app-service/app-service';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -27,9 +30,10 @@ import {BackgroundMode} from "@ionic-native/background-mode";
     SettingPage
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +51,9 @@ import {BackgroundMode} from "@ionic-native/background-mode";
     Badge,
     Vibration,
     Shake,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Device,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppServiceProvider
   ]
 })
 export class AppModule {

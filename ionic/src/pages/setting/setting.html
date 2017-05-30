@@ -4,7 +4,7 @@
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>
-    تنظیمات
+      تنظیمات
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -19,4 +19,9 @@
     <ion-label>استفاده از سنسور حرکت</ion-label>
     <ion-toggle checked="{{shakeStatus}}" (ionChange)="shakeSetting($event)"></ion-toggle>
   </ion-item>
+  <br>
+  <p class="text">
+    <ion-icon name="warning"></ion-icon>
+    ️ توجه داشته باشید تغییرات بعد از خروج کامل از برنامه و اجرای دوباره اعمال خواهند شد.
+  </p>
 </ion-content>

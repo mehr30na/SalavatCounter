@@ -6,7 +6,6 @@ import {Badge} from "@ionic-native/badge";
 import {Vibration} from "@ionic-native/vibration";
 import {Shake} from "@ionic-native/shake";
 
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -26,12 +25,20 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+
     this.storage.get('tap').then(res => {
       this.tap = res;
       this.count = this.convertToPersianDigit(this.tap);
     });
 
     this.storage.get('shake').then(res => {
+      if (res == null) {
+
+        this.storage.set('shake', 'true');
+        this.shake.startWatch(19).subscribe(() => {
+          this.salavatCount();
+        });
+      }
       if (res == 'true') {
         this.shake.startWatch(19).subscribe(() => {
           this.salavatCount();
@@ -39,7 +46,11 @@ export class HomePage implements OnInit {
       }
     });
     this.storage.get('vibration').then(res => {
-      if (res == 'true'){
+      if (res == null) {
+        this.storage.set('vibration', 'true');
+        this.vibartion = true;
+      }
+      if (res == 'true') {
         this.vibartion = true;
       }
     })
@@ -52,8 +63,8 @@ export class HomePage implements OnInit {
   }
 
   salavatCount() {
-    if(this.vibartion){
-      this.vibration.vibrate(70);
+    if (this.vibartion) {
+      this.vibration.vibrate(90);
     }
     this.count = this.convertToPersianDigit(this.tap + 1);
     this.tap = this.tap + 1;
@@ -73,6 +84,7 @@ export class HomePage implements OnInit {
           handler: () => {
             console.log('Agree clicked');
             this.tap = 0;
+            this.storage.set('tap', this.tap);
             this.count = this.convertToPersianDigit(this.tap);
             this.badge.clear();
           }
@@ -102,6 +114,7 @@ export class HomePage implements OnInit {
 
 
   shareApp() {
+    window.open('https://t.me/joinchat/AAAAAEGWaaoO_WQlPIDdXQ', '_blank', 'location=yes');
   }
 
 
