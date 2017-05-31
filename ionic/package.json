@@ -26,6 +26,7 @@
     "@ionic-native/device": "^3.10.3",
     "@ionic-native/http": "^3.10.3",
     "@ionic-native/shake": "^3.10.3",
+    "@ionic-native/spinner-dialog": "^3.10.3",
     "@ionic-native/splash-screen": "3.10.3",
     "@ionic-native/status-bar": "3.10.3",
     "@ionic-native/vibration": "^3.10.3",

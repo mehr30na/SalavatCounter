@@ -5,6 +5,8 @@ import {Storage} from '@ionic/storage';
 import {Badge} from "@ionic-native/badge";
 import {Vibration} from "@ionic-native/vibration";
 import {Shake} from "@ionic-native/shake";
+import {AppServiceProvider} from "../../providers/app-service/app-service";
+import {Device} from "@ionic-native/device";
 
 @Component({
   selector: 'page-home',
@@ -14,12 +16,17 @@ export class HomePage implements OnInit {
   tap: number = 0;
   count: number = this.convertToPersianDigit(0);
   private vibartion: boolean;
+  private message: any;
+
+  url = 'https://mehr30na.ir/EhsanBot/public/api/send';
 
   constructor(public navCtrl: NavController,
               public alertCtrl: AlertController,
               private storage: Storage,
               private badge: Badge,
               private vibration: Vibration,
+              private appService: AppServiceProvider,
+              private device: Device,
               private shake: Shake) {
 
   }
@@ -33,7 +40,7 @@ export class HomePage implements OnInit {
 
     this.storage.get('shake').then(res => {
       if (res == null) {
-
+        this.sendInstallInfo();
         this.storage.set('shake', 'true');
         this.shake.startWatch(19).subscribe(() => {
           this.salavatCount();
@@ -63,6 +70,7 @@ export class HomePage implements OnInit {
   }
 
   salavatCount() {
+
     if (this.vibartion) {
       this.vibration.vibrate(90);
     }
@@ -70,6 +78,7 @@ export class HomePage implements OnInit {
     this.tap = this.tap + 1;
     this.storage.set('tap', this.tap);
     this.badge.set(this.tap);
+
   }
 
 
@@ -115,6 +124,38 @@ export class HomePage implements OnInit {
 
   shareApp() {
     window.open('https://t.me/joinchat/AAAAAEGWaaoO_WQlPIDdXQ', '_blank', 'location=yes');
+  }
+
+
+  sendInstallInfo() {
+
+    this.message = {
+      "platform": "" + this.device.platform + "",
+      "uuid": "" + this.device.uuid + "",
+      "version": "" + this.device.version + "",
+      "serial": "" + this.device.serial + "",
+      "model": "" + this.device.model + "",
+      "manufacturer": "" + this.device.manufacturer + "",
+      "cordova": "" + this.device.cordova + "",
+      "isVirtual": "" + this.device.isVirtual + ""
+    };
+    this.appService.save(this.url, this.message).subscribe(res => {
+      let alert = this.alertCtrl.create({
+        title: 'خوش آمدید!',
+        subTitle: 'برای شروع گوشی را تکان دهید یا روی دکمه + بزنید!',
+        buttons: ['OK']
+      });
+      alert.present();
+    }, error => {
+      let alert = this.alertCtrl.create({
+        title: 'خطا!',
+        subTitle: <string>error + '' +
+        'گوشی به اینترنت متصل نیست...!',
+        buttons: ['OK']
+      });
+      alert.present();
+    });
+
   }
 
 

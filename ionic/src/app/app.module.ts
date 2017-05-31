@@ -19,6 +19,8 @@ import {BackgroundMode} from "@ionic-native/background-mode";
 import {Device} from "@ionic-native/device";
 import {AppServiceProvider} from '../providers/app-service/app-service';
 import {HttpModule} from "@angular/http";
+import {ReportPage} from "../pages/report/report";
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {HttpModule} from "@angular/http";
     ContactPage,
     HomePage,
     TabsPage,
-    SettingPage
+    SettingPage,
+    ReportPage
   ],
   imports: [
     HttpModule,
@@ -42,7 +45,8 @@ import {HttpModule} from "@angular/http";
     ContactPage,
     HomePage,
     TabsPage,
-    SettingPage
+    SettingPage,
+    ReportPage
   ],
   providers: [
     StatusBar,
@@ -53,7 +57,9 @@ import {HttpModule} from "@angular/http";
     Shake,
     Device,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppServiceProvider
+    AppServiceProvider,
+
+
   ]
 })
 export class AppModule {

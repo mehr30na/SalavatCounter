@@ -57,9 +57,7 @@ export class MyApp {
       splashScreen.hide();
       this.backgroundMode.enable();
       this.storage.get('shake').then(res => {
-        if (res == null) {
-          this.sendInstallInfo();
-        } else {
+        if (res != null) {
           this.sendRunInfo();
         }
       })
@@ -71,43 +69,15 @@ export class MyApp {
     // this.navCtrl.push(HomePage);
   }
 
-  sendInstallInfo() {
-
-    this.message = {
-      "platform": "" + this.device.platform + "",
-      "uuid": "" + this.device.uuid + "",
-      "version": "" + this.device.version + "",
-      "serial": "" + this.device.serial + "",
-      "model": "" + this.device.model + "",
-      "manufacturer": "" + this.device.manufacturer + "",
-      "cordova": "" + this.device.cordova + "",
-      "isVirtual": "" + this.device.isVirtual + ""
-    };
-
-    this.appService.save(this.url, this.message).subscribe(res => {
-      let alert = this.alertCtrl.create({
-        title: 'خوش آمدید!',
-        subTitle: 'برای شروع گوشی را تکان دهید یا روی دکمه + بزنید!',
-        buttons: ['OK']
-      });
-      alert.present();
-    }, error => {
-      let alert = this.alertCtrl.create({
-        title: 'خطا!',
-        subTitle: <string>error,
-        buttons: ['OK']
-      });
-      alert.present();
-    });
-
-  }
 
   sendRunInfo() {
 
     this.message = {
+
       "uuid": "" + this.device.uuid + "",
       "serial": "" + this.device.serial + "",
       "manufacturer": "" + this.device.manufacturer + ""
+
     };
 
     this.appService.save(this.url, this.message).subscribe(res => {
@@ -120,7 +90,8 @@ export class MyApp {
     }, error => {
       let alert = this.alertCtrl.create({
         title: 'خطا!',
-        subTitle: <string>error,
+        subTitle: <string>error+'' +
+        'گوشی به اینترنت متصل نیست...!',
         buttons: ['OK']
       });
       alert.present();

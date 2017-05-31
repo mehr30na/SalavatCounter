@@ -12,12 +12,22 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppServiceProvider {
 
-  constructor(public http: Http,) {
+  constructor(public http: Http) {
+  }
+
+  read(url: string) {
+    console.log(url);
+    return this.http.get(url)
+      .map(res =>
+        res.json()
+      );
   }
 
   save(url: string, object) {
     return this.http.post(url, object)
-      .map(res => res.json());
+      .map(res =>
+        res.json()
+      );
   }
 
 
