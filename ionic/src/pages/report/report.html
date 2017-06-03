@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      تعداد صلواتها و ختم قرآن
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <img src="./assets/img/salavat.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+ صلواتها &nbsp; <ion-icon name="refresh-circle" (click)="getStatistics()"></ion-icon>&nbsp;&nbsp;
+        <ion-spinner name="bubbles" *ngIf="!statistics.totalsum"></ion-spinner>
+      </ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9>تعداد کل صلواتها تا به این لحظه</ion-col>
+          <ion-col col-3>
+            <ion-badge color="secondary" class="badge-text" >{{convertToPersianDigit(statistics.totalsum)}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-9>تعداد صلواتهای امروز</ion-col>
+          <ion-col col-3>
+            <ion-badge color="secondary" class="badge-text" >{{convertToPersianDigit(statistics.todaytotal)}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-9>تعداد اعضای شرکت کننده </ion-col>
+          <ion-col col-3>
+            <ion-badge color="secondary" class="badge-text" >{{convertToPersianDigit(statistics.members)}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <img src="./assets/img/quran.jpg"/>
+    <ion-card-content>
+      <ion-card-title>
+ ختم قرآن&nbsp; <ion-icon name="refresh-circle" (click)="getStatistics()"></ion-icon>&nbsp;&nbsp;
+        <ion-spinner name="bubbles" *ngIf="!statistics.totalsum"></ion-spinner>
+      </ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-9>شماره دوره ختم قرآن</ion-col>
+          <ion-col col-3>
+            <ion-badge color="secondary" class="badge-text" >{{convertToPersianDigit(statistics.CurrentRound)}}</ion-badge>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-9>تعداد حزبهای باقی مانده این دوره</ion-col>
+          <ion-col col-3>
+            <ion-badge color="secondary" class="badge-text" >{{convertToPersianDigit(statistics.remaining)}}</ion-badge>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
